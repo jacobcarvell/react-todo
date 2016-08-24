@@ -11,6 +11,6 @@ $(document).foundation();
 require('style!css!sass!applicationStyle')
 
 ReactDOM.render(
-  <p>Boilerplate project version 2</p>,
+  <TodoApp />,
   document.getElementById('app')
 );
