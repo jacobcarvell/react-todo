@@ -19,11 +19,19 @@ describe('TodoList', () => {
     }, {
       id: 2,
       text: "Test 2"
-    }]
+    }];
     var todoList = TestUtils.renderIntoDocument(<TodoList todos={todos} />);
     var todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, Todo);
 
     expect(todosComponents.length).toBe(todos.length);
+  });
+
+  it('Should render an empty message if there are no items', () => {
+    var todos = [];
+    var todolist = TestUtils.renderIntoDocument(<TodoList todos={todos} />);
+    var $el = $(ReactDOM.findDOMNode(todolist));
+
+    expect($el.find('.container__message').length).toBe(1);
   });
 
 });
