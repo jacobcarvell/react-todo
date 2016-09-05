@@ -40,4 +40,21 @@ describe('Actions', () => {
 
     expect(res).toEqual(action);
   });
+
+  it('Should generate a add todos action', () => {
+     var todos = [{
+        id: '1',
+        text: 'anything',
+        completed: false,
+        completedAt: undefined,
+        createdAt: 10000
+     }];
+     var action = {
+         type: 'ADD_TODOS',
+         todos
+     } ;
+
+     var res = actions.addTodos(todos);
+     expect(res).toEqual(action);
+  });
 });
