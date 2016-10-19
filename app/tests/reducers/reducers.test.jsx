@@ -47,27 +47,28 @@ describe('Reducers', () => {
       expect(res[0]).toEqual(action.todo);
     });
 
-    it('Should toggle todo completed status', () => {
-      var state = [{
+    it('Should update todo completed status', () => {
+      var todos = [{
         id: 1,
         text: 'Test',
         completed: false,
         createdAt: 0,
         completedAt: undefined
       }];
+      var updates = {
+         completed: false,
+         completedAt: null
+      }
       var action = {
-        type: 'TOGGLE_TODO',
-        id: 1
+        type: 'UPDATE_TODO',
+        id: todos[0].id,
+        updates
       };
-      var res = reducers.todosReducer(df(state), df(action));
+      var res = reducers.todosReducer(df(todos), df(action));
 
-      expect(res[0].completed).toEqual(true);
-      expect(res[0].completedAt).toNotBeA('undefined');
-
-      var res = reducers.todosReducer(df(res), df(action));
-
-      expect(res[0].completed).toEqual(false);
-      expect(res[0].completedAt).toBeA('undefined');
+      expect(res[0].completed).toEqual(updates.completed);
+      expect(res[0].completedAt).toEqual(updates.completedAt);
+      expect(res[0].text).toEqual(todos[0].text);
     });
 
     it('Should add existing todos', () => {
