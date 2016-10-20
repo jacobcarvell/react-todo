@@ -117,6 +117,4 @@ describe('Reducers', () => {
          expect(res).toEqual({});
       });
    });
-
-
 });
