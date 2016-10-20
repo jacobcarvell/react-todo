@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
+process.env.NODE_ENV = 'production';
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
@@ -39,7 +39,7 @@ module.exports = {
     ],
     alias: {
       app: 'app',
-      applicationStyle: 'app/Styles/app.scss',
+      applicationStyle: 'app/styles/app.scss',
       actions: 'app/actions/actions.jsx',
       reducers: 'app/reducers/reducers.jsx',
       configureStore: 'app/store/configureStore.jsx'
