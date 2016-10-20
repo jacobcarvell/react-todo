@@ -91,5 +91,32 @@ describe('Reducers', () => {
     });
   });
 
+   describe('authReducer', () => {
+      it('should add a new user id', () => {
+         const action = {
+            type: 'LOGIN',
+            uid: '123'
+         };
+
+         var res = reducers.authReducer(undefined, df(action));
+         expect(res).toEqual({
+            uid: action.uid
+         });
+      });
+
+      it('should wipe auth on logout', () => {
+         const authData = {
+            uid: '123'
+         };
+
+         const action = {
+            type: 'LOGOUT'
+         }
+
+         var res = reducers.authReducer(df(authData), df(action));
+         expect(res).toEqual({});
+      });
+   });
+
 
 });
